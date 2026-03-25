@@ -20,7 +20,7 @@ blocks:
         - name: 'Job #1'
           commands:
             - pip install pytest requests flask coverage locust
-  - name: Test
+  - name: Unit Test
     dependencies:
       - Install dependencies
     task:
@@ -28,6 +28,6 @@ blocks:
         - name: test
           commands:
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
-            - pwd
+            - echo pwd
             - cd 1-tdd
             - python test_factorial.py
