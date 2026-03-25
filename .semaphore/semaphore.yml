@@ -20,14 +20,13 @@ blocks:
         - name: 'Job #1'
           commands:
             - pip install pytest requests flask coverage locust
+            - python -m venv venv
+            - source venv/bin/activate
   - name: "\U0001F680 Deploy"
     dependencies:
       - Install dependencies
     task:
       jobs:
-        - name: "\U0001F4E6 Deploy to Production"
+        - name: test
           commands:
-            - echo "Building application..."
-            - echo "Running security checks..."
-            - echo "Deploying to production..."
-            - echo "Deployment completed successfully!"
+            - python test_factorial.py
