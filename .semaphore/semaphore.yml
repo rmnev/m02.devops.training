@@ -35,4 +35,4 @@ blocks:
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
             - cd 1-tdd
             - python test_factorial.py
-            - echo hello
+            - echo hello1
