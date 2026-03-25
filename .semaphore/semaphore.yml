@@ -19,10 +19,8 @@ blocks:
       jobs:
         - name: 'Job #1'
           commands:
-            - pip install pytest requests flask coverage locust python3.12-venv
-            - python -m venv venv
-            - source venv/bin/activate
-  - name: "\U0001F680 Deploy"
+            - pip install pytest requests flask coverage locust
+  - name: Test
     dependencies:
       - Install dependencies
     task:
