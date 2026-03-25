@@ -15,7 +15,7 @@ auto_cancel:
 global_job_config:
   prologue:
     commands:
-      - sudo apt install python3.12-venv
+      - sudo apt install -y python3.12-venv
       - checkout
 blocks:
   - name: Install dependencies
