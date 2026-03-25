@@ -27,4 +27,5 @@ blocks:
       jobs:
         - name: test
           commands:
+            - cd 1-tdd
             - python test_factorial.py
