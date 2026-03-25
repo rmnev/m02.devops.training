@@ -27,7 +27,7 @@ blocks:
       jobs:
         - name: test
           commands:
+            - checkout
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
-            - echo pwd
             - cd 1-tdd
             - python test_factorial.py
