@@ -16,8 +16,7 @@ global_job_config:
   prologue:
     commands:
       - sudo apt-get update
-      - sudo apt install -y python3.12-venv
-      - sudo apt install python3-pytest
+      - sudo apt install -y python3.12-venv python3-pytest
       - checkout
 blocks:
   - name: Install dependencies
