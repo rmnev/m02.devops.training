@@ -12,6 +12,10 @@ auto_cancel:
     when: branch != 'main'
   queued:
     when: branch = 'main'
+global_job_config:
+  prologue:
+    commands:
+      - checkout
 blocks:
   - name: Install dependencies
     dependencies: []
