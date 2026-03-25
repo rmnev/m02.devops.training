@@ -38,4 +38,3 @@ blocks:
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
             - cd 1-tdd
             - pytest
-            - python test_factorial.py
