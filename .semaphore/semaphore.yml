@@ -15,7 +15,6 @@ auto_cancel:
 global_job_config:
   prologue:
     commands:
-      - apt install python3-pytest
       - checkout
 blocks:
   - name: Install dependencies
