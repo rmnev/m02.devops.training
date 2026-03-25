@@ -24,6 +24,8 @@ blocks:
         - name: 'Job #1'
           commands:
             - pip install pytest requests flask coverage locust
+            - python -m venv venv
+            - source venv/bin/activate
   - name: Unit Test
     dependencies:
       - Install dependencies
