@@ -28,5 +28,6 @@ blocks:
         - name: test
           commands:
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
+            - pwd
             - cd 1-tdd
             - python test_factorial.py
