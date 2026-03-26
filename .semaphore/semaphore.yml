@@ -75,6 +75,6 @@ blocks:
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
             - checkout
             - cd 4-e2e
-            - pip install flask
-            - python app.py
+            - pip3 install flask
+            - python3 app.py
             - pytest
