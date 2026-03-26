@@ -1,24 +1,49 @@
-import pytest
-from service import store_value, get_value, delete_value, list_keys, database
+# service.py
+from datastore import database  # assume database = {} is defined in datastore.py
 
-def setup_function():
-    # Reset the database before each test
-    database.clear()
 
-def test_store_and_get_value():
-    store_value("name", "Alice")
-    assert get_value("name") == "Alice"
-    assert get_value("nonexistent") is None
+def process_and_store(key, value):
+    """
+    Process the value (strip whitespace, convert to uppercase) 
+    and store it. Return processed value (uppercase).
+    """
+    processed = value.strip().upper()
+    database[key] = value.strip()  # store the cleaned but not uppercased version
+    return processed
 
-def test_delete_value():
-    store_value("age", 30)
-    assert delete_value("age") is True
-    # Deleting again should return False
-    assert delete_value("age") is False
 
-def test_list_keys():
-    store_value("x", 1)
-    store_value("y", 2)
-    keys = list_keys()
-    assert "x" in keys and "y" in keys
-    assert len(keys) == 2
+def retrieve_processed(key):
+    """
+    Retrieve the stored value in lowercase format.
+    Return None if key does not exist.
+    """
+    value = database.get(key)
+    if value is not None:
+        return value.lower()
+    return None
+
+
+def update_value(key, new_value):
+    """
+    Update the stored value for a key.
+    """
+    if key in database:
+        database[key] = new_value.strip()
+        return True
+    return False
+
+
+def delete_value(key):
+    """
+    Delete a key from the database.
+    Return True if deleted, False if key not found.
+    """
+    if key in database:
+        del database[key]
+        return True
+    return False
+
+
+def list_all_keys():
+    """Return a list of all keys."""
+    return list(database.keys())
