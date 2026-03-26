@@ -42,7 +42,7 @@ blocks:
             - pytest
   - name: Unit
     dependencies:
-      - TDD
+      - Install dependencies
     task:
       jobs:
         - name: test
