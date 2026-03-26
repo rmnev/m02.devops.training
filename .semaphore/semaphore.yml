@@ -103,3 +103,4 @@ blocks:
             - cd 5-test-reports
             - pytest --junitxml=reports.xml
             - test-results publish --name "Test Reports" reports.xml
+            - artifact push workflow reports.xml
