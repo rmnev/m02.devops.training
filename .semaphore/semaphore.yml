@@ -76,7 +76,7 @@ blocks:
             - checkout
             - cd 4-e2e
             - '# Install dependencies'
-            - python -m pip install -r requirements.txt
+            - pip install -r requirements.txt
             - '# Start app in background'
             - python app.py &
             - '# Wait a bit for server to start'
