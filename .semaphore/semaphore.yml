@@ -64,4 +64,15 @@ blocks:
             - checkout
             - cd 3-integration-testing
             - pytest
-            - echo hello
+  - name: 'Block #5'
+    dependencies:
+      - Install dependencies
+    task:
+      jobs:
+        - name: E2E
+          commands:
+            - sudo apt install -y python3-pytest
+            - 'export PATH=$PATH:/home/semaphore/.local/bin'
+            - checkout
+            - cd 4-e2e
+            - pip install -r requirements.txt
