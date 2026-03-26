@@ -71,6 +71,10 @@ blocks:
       jobs:
         - name: E2E
           commands:
+            - sudo apt-get update
+            - sudo apt install -y python3.12-venv
+            - python -m venv venv
+            - source venv/bin/activate
             - sudo apt install -y python3-pytest
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
             - checkout
@@ -93,4 +97,4 @@ blocks:
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
             - checkout
             - cd 5-test-reports
-            - pytest
+            - pytest -junitxml=reports.xml
