@@ -75,6 +75,11 @@ blocks:
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
             - checkout
             - cd 4-e2e
-            - pip3 install flask
-            - python3 app.py
-            - pytest
+            - '# Install dependencies'
+            - python -m pip install -r requirements.txt
+            - '# Start app in background'
+            - python app.py &
+            - '# Wait a bit for server to start'
+            - sleep 2
+            - '# Run tests'
+            - python3 -m unittest test_e2e.py
