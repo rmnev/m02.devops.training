@@ -33,12 +33,22 @@ blocks:
       - Install dependencies
     task:
       jobs:
-        - name: presets
+        - name: test
           commands:
             - sudo apt install -y python3-pytest
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
             - checkout
+            - cd 1-tdd
+            - pytest
+  - name: Unit
+    dependencies:
+      - TDD
+    task:
+      jobs:
         - name: test
           commands:
-            - cd 1-tdd
+            - sudo apt install -y python3-pytest
+            - 'export PATH=$PATH:/home/semaphore/.local/bin'
+            - checkout
+            - cd 2-unit-testing
             - pytest
