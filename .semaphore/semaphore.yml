@@ -37,5 +37,6 @@ blocks:
           commands:
             - sudo apt install -y python3-pytest
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
+            - checkout
             - cd 1-tdd
             - pytest
