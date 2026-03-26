@@ -64,3 +64,4 @@ blocks:
             - checkout
             - cd 3-integration-testing
             - pytest
+            - echo hello
