@@ -28,15 +28,17 @@ blocks:
             - python -m venv venv
             - source venv/bin/activate
             - pip install pytest requests flask coverage locust
-  - name: Unit Test
+  - name: TDD
     dependencies:
       - Install dependencies
     task:
       jobs:
-        - name: test
+        - name: presets
           commands:
             - sudo apt install -y python3-pytest
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
             - checkout
+        - name: test
+          commands:
             - cd 1-tdd
             - pytest
