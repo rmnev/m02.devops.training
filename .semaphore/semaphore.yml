@@ -82,4 +82,4 @@ blocks:
             - '# Wait a bit for server to start'
             - sleep 2
             - '# Run tests'
-            - python3 -m unittest test_e2e.py
+            - pytest
