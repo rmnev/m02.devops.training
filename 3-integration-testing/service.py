@@ -1,18 +1,24 @@
-def process_and_store(key, raw_value):
-    raise NotImplementedError("Implement process_and_store using TDD")
+import pytest
+from service import store_value, get_value, delete_value, list_keys, database
 
+def setup_function():
+    # Reset the database before each test
+    database.clear()
 
-def retrieve_processed(key):
-    raise NotImplementedError("Implement retrieve_processed using TDD")
+def test_store_and_get_value():
+    store_value("name", "Alice")
+    assert get_value("name") == "Alice"
+    assert get_value("nonexistent") is None
 
+def test_delete_value():
+    store_value("age", 30)
+    assert delete_value("age") is True
+    # Deleting again should return False
+    assert delete_value("age") is False
 
-def update_value(key, raw_value):
-    raise NotImplementedError("Implement update_value using TDD")
-
-
-def delete_value(key):
-    raise NotImplementedError("Implement delete_value using TDD")
-
-
-def list_all_keys():
-    raise NotImplementedError("Implement list_all_keys using TDD")
+def test_list_keys():
+    store_value("x", 1)
+    store_value("y", 2)
+    keys = list_keys()
+    assert "x" in keys and "y" in keys
+    assert len(keys) == 2
