@@ -76,4 +76,5 @@ blocks:
             - checkout
             - cd 4-e2e
             - pip install -r requirements.txt
+            - python app.py
             - pytest
