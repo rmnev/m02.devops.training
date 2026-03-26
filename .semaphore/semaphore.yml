@@ -80,9 +80,6 @@ blocks:
             - '# Start server in background'
             - python app.py > server.log 2>&1 &
             - '# Wait until server responds'
-            - 'until curl -s http://127.0.0.1:5000/ > /dev/null; do'
-            - '  echo "Waiting for server..."'
-            - '  sleep 1'
-            - done
+            - 'until curl -s http://127.0.0.1:5000/ > /dev/null; do sleep 1; done'
             - '# Run tests'
             - pytest
