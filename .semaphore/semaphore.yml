@@ -24,7 +24,7 @@ blocks:
         - name: 'Job #1'
           commands:
             - sudo apt-get update
-            - sudo apt install -y python3.12-venv python3-pytest
+            - sudo apt install -y python3.12-venv
             - python -m venv venv
             - source venv/bin/activate
             - pip install pytest requests flask coverage locust
@@ -35,6 +35,7 @@ blocks:
       jobs:
         - name: test
           commands:
+            - sudo apt install python3-pytest
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
             - cd 1-tdd
             - pytest
