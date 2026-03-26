@@ -84,7 +84,10 @@ blocks:
             - pytest
   - name: Reporting
     dependencies:
-      - Install dependencies
+      - 'Block #5'
+      - Integration tests
+      - TDD
+      - Unit
     task:
       jobs:
         - name: Test reports
