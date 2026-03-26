@@ -76,7 +76,7 @@ blocks:
             - checkout
             - cd 4-e2e
             - '# Install deps'
-            - python -m pip install -r requirements.txt
+            - pip install -r requirements.txt
             - '# Start server in background'
             - python app.py > server.log 2>&1 &
             - '# Wait until server responds'
