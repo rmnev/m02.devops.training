@@ -52,3 +52,15 @@ blocks:
             - checkout
             - cd 2-unit-testing
             - pytest
+  - name: Integration tests
+    dependencies:
+      - Install dependencies
+    task:
+      jobs:
+        - name: test
+          commands:
+            - sudo apt install -y python3-pytest
+            - 'export PATH=$PATH:/home/semaphore/.local/bin'
+            - checkout
+            - cd 3-integration-testing
+            - pytest
