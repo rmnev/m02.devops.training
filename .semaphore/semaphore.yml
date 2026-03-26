@@ -35,7 +35,7 @@ blocks:
       jobs:
         - name: test
           commands:
-            - sudo apt install python3-pytest
+            - sudo apt install -y python3-pytest
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
             - cd 1-tdd
             - pytest
