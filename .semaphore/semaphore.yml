@@ -98,4 +98,4 @@ blocks:
             - checkout
             - cd 5-test-reports
             - pytest --junitxml=reports.xml
-            - test-results publish results.xml t
+            - test-results publish results.xml
