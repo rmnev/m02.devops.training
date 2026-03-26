@@ -15,8 +15,6 @@ auto_cancel:
 global_job_config:
   prologue:
     commands:
-      - sudo apt-get update
-      - sudo apt install -y python3.12-venv python3-pytest
       - checkout
 blocks:
   - name: Install dependencies
@@ -25,6 +23,8 @@ blocks:
       jobs:
         - name: 'Job #1'
           commands:
+            - sudo apt-get update
+            - sudo apt install -y python3.12-venv python3-pytest
             - python -m venv venv
             - source venv/bin/activate
             - pip install pytest requests flask coverage locust
