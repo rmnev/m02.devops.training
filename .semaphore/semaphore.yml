@@ -16,10 +16,6 @@ global_job_config:
   prologue:
     commands:
       - checkout
-  epilogue:
-    always:
-      commands:
-        - test-results gen-pipeline-report
 blocks:
   - name: Install dependencies
     dependencies: []
@@ -104,3 +100,9 @@ blocks:
             - pytest --junitxml=reports.xml
             - test-results publish --name "Test Reports" reports.xml
             - artifact push workflow reports.xml
+after_pipeline:
+  task:
+    jobs:
+      - name: Report generation
+        commands:
+          - test-results gen-pipeline-report
