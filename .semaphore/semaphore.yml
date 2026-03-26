@@ -75,11 +75,13 @@ blocks:
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
             - checkout
             - cd 4-e2e
-            - '# Install dependencies'
-            - pip install -r requirements.txt
-            - '# Start app in background'
-            - python app.py &
-            - '# Wait a bit for server to start'
-            - sleep 2
+            - '# Install deps'
+            - python -m pip install -r requirements.txt
+            - '# Start server in background'
+            - python app.py > server.log 2>&1 &
+            - '# Wait until server responds'
+            - 'until curl -s http://127.0.0.1:5000/ > /dev/null; do'
+            - '  sleep 1'
+            - done
             - '# Run tests'
             - pytest
