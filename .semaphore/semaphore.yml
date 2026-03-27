@@ -104,6 +104,19 @@ blocks:
             - test-results publish --name "Test Reports" reports.xml
             - artifact push workflow reports.xml
             - exit $(cat pytest_exit_code)
+  - name: Coverage
+    dependencies:
+      - Reporting
+    task:
+      jobs:
+        - name: Collect
+          commands:
+            - cd 7-test-coverage
+            - coverage run -m pytest
+            - coverage report -m
+            - coverage html
+            - tar -czf coverage-report.tar.gz htmlcov
+            - artifact push workflow coverage-report.tar.gz
 after_pipeline:
   task:
     jobs:
