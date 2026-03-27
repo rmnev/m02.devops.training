@@ -111,6 +111,8 @@ blocks:
       jobs:
         - name: Collect
           commands:
+            - sudo apt-get update
+            - sudo apt install -y python3.12-venv
             - python -m venv venv
             - source venv/bin/activate
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
