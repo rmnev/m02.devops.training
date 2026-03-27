@@ -84,10 +84,7 @@ blocks:
             - pytest
   - name: Reporting
     dependencies:
-      - E2E
-      - Integration tests
-      - TDD
-      - Unit
+      - Coverage
     task:
       jobs:
         - name: Test reports
@@ -106,7 +103,10 @@ blocks:
             - exit $(cat pytest_exit_code)
   - name: Coverage
     dependencies:
-      - Reporting
+      - E2E
+      - Integration tests
+      - TDD
+      - Unit
     task:
       jobs:
         - name: Collect
