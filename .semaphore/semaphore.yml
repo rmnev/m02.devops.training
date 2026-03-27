@@ -100,12 +100,10 @@ blocks:
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
             - checkout
             - cd 5-test-reports
-            - pytest --junitxml=reports.xml
-            - '[[ -f report.xml ]] && test-results publish report.xml'
-            - '# pytest --junitxml=reports.xml; echo $? > pytest_exit_code'
-            - '# test-results publish --name "Test Reports" reports.xml'
-            - '# artifact push workflow reports.xml'
-            - '# exit $(cat pytest_exit_code)'
+            - pytest --junitxml=reports.xml; echo $? > pytest_exit_code
+            - test-results publish --name "Test Reports" reports.xml
+            - artifact push workflow reports.xml
+            - exit $(cat pytest_exit_code)
 after_pipeline:
   task:
     jobs:
