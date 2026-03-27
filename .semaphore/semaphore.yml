@@ -64,12 +64,12 @@ blocks:
             - checkout
             - cd 3-integration-testing
             - pytest
-  - name: 'Block #5'
+  - name: E2E
     dependencies:
       - Install dependencies
     task:
       jobs:
-        - name: E2E
+        - name: test
           commands:
             - sudo apt-get update
             - sudo apt install -y python3.12-venv
@@ -84,7 +84,7 @@ blocks:
             - pytest
   - name: Reporting
     dependencies:
-      - 'Block #5'
+      - E2E
       - Integration tests
       - TDD
       - Unit
