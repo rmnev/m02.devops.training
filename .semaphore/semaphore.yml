@@ -119,7 +119,7 @@ blocks:
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
             - pip install coverage
             - cd 7-test-coverage
-            - coverage run -m pytest
+            - coverage run -m pytest test_calculator.py
             - coverage report -m
             - coverage html
             - tar -czf coverage-report.tar.gz htmlcov
