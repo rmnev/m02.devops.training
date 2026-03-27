@@ -111,6 +111,8 @@ blocks:
       jobs:
         - name: Collect
           commands:
+            - source venv/bin/activate
+            - 'export PATH=$PATH:/home/semaphore/.local/bin'
             - pip install coverage
             - cd 7-test-coverage
             - coverage run -m pytest
