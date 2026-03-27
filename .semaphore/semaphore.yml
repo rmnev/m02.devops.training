@@ -115,6 +115,7 @@ blocks:
             - sudo apt install -y python3.12-venv
             - python -m venv venv
             - source venv/bin/activate
+            - sudo apt install -y python3-pytest
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
             - pip install coverage
             - cd 7-test-coverage
