@@ -117,7 +117,7 @@ blocks:
             - source venv/bin/activate
             - sudo apt install -y python3-pytest
             - 'export PATH=$PATH:/home/semaphore/.local/bin'
-            - pip install coverage
+            - pip install pytest coverage
             - cd 7-test-coverage
             - coverage run -m pytest test_calculator.py
             - coverage report -m
