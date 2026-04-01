@@ -129,4 +129,5 @@ after_pipeline:
     jobs:
       - name: Report generation
         commands:
-          - test-results gen-pipeline-report
+          - artifact pull workflow coverage-report.tar.gz -d /tmp/coverage
+          - test-results gen-pipeline-report /tmp/coverage/coverage-report.tar.gz
