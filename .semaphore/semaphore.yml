@@ -112,17 +112,20 @@ blocks:
         - name: Collect
           commands:
             - sudo apt-get update
-            - sudo apt install -y python3.12-venv
+            - sudo apt install -y python3.12-venv python3-pip
             - python -m venv venv
             - source venv/bin/activate
-            - sudo apt install -y python3-pytest
-            - 'export PATH=$PATH:/home/semaphore/.local/bin'
-            - pip install pytest coverage
+            - pip install --upgrade pip pytest coverage
             - cd 7-test-coverage
+            - '# Run tests'
             - coverage run -m pytest test_calculator.py
             - coverage report -m
             - coverage html
+            - '# Package coverage report'
             - tar -czf coverage-report.tar.gz htmlcov
+            - '# Generate Semaphore test report from the local tar'
+            - test-results gen-pipeline-report coverage-report.tar.gz
+            - '# Push artifact to Semaphore'
             - artifact push workflow coverage-report.tar.gz
 after_pipeline:
   task:
