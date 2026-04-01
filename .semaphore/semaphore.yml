@@ -129,4 +129,4 @@ after_pipeline:
     jobs:
       - name: Report generation
         commands:
-          - test-results gen-pipeline-report coverage-report.tar.gz
+          - test-results gen-pipeline-report 7-test-coverage/coverage-report.tar.gz
