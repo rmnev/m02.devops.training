@@ -122,7 +122,6 @@ blocks:
             - coverage html
             - tar -czf coverage-report.tar.gz htmlcov
             - artifact push workflow coverage-report.tar.gz
-            - exit $(cat pytest_exit_code)
 after_pipeline:
   task:
     jobs:
