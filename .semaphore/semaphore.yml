@@ -117,11 +117,12 @@ blocks:
             - source venv/bin/activate
             - pip install --upgrade pip pytest coverage
             - cd 7-test-coverage
-            - coverage run -m pytest
+            - coverage run -m pytest; echo $? > pytest_exit_code
             - coverage report -m
             - coverage html
             - tar -czf coverage-report.tar.gz htmlcov
             - artifact push workflow coverage-report.tar.gz
+            - exit $(cat pytest_exit_code)
 after_pipeline:
   task:
     jobs:
