@@ -117,19 +117,14 @@ blocks:
             - source venv/bin/activate
             - pip install --upgrade pip pytest coverage
             - cd 7-test-coverage
-            - '# Run tests'
-            - coverage run -m pytest test_calculator.py
+            - coverage run -m pytest
             - coverage report -m
             - coverage html
-            - '# Package coverage report'
             - tar -czf coverage-report.tar.gz htmlcov
-            - '# Generate Semaphore test report from the local tar'
-            - test-results gen-pipeline-report coverage-report.tar.gz
-            - '# Push artifact to Semaphore'
             - artifact push workflow coverage-report.tar.gz
 after_pipeline:
   task:
     jobs:
       - name: Report generation
         commands:
-          - test-results gen-pipeline-report 7-test-coverage/coverage-report.tar.gz
+          - test-results gen-pipeline-report
